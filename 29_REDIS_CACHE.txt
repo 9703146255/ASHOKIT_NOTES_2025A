@@ -1,0 +1,124 @@
+
+================
+What is Cache 
+=================
+
+=> Every application will contain two types of tables
+
+        1) Transactional tables
+
+        2) Non-Transactional tables
+
+=> If our application is performing DML operations on the table then those tables are called as Tx tables.
+
+        Ex: products_tbl, orders_tbl, users_tbl ....        
+
+
+=> If our application is performing only DQL (Select) operations on the table then those tables are called as Non-Tx tables. These are also called as static tables.
+
+        Ex: country_tbl, states_tbl ....
+
+
+=> It is not recommended to read static data from DB table everytime. Because DB call is costly operation which will reduce performance of the application. 
+
+    (driver loading + connection + query execution + data process + conn close)
+
+Usecase : Read countries from db table and display in application registration page as drop down options.
+
+Note: To improve performance of the application we need to maintain cache. 
+
+==============
+Redis Server
+===============
+
+=> Redis means Remote Dictionary Server.
+
+=> It is an open source in-memory data store.
+
+=> It is used as database, cache, message broker...
+
+=> The main purpose of REDIS Cache is used to improve performance of our application by simplifying read and write operations.
+
+=> Redis is known for its speed, flexibility, and ease of use.
+
+=> It is one stop solution when we want to perform quick read and write operations.
+
+
+
+===============
+RDBMS Vs Redis
+===============
+
+=> We will use RDBMS for below scenarios
+
+1) Structured data
+2) Tables, Rows and Columns
+3) Complex Queries
+4) Joins
+5) Relationships are very imp
+
+=> We will use Redis for below scenarios
+
+1) Fast Read & Write Operations
+2) Key-Value format
+3) Relationships are not important
+4) Transactions are not important
+5) Performance is important
+
+
+===================
+Redis Server Setup
+===================
+
+=> Setup Redis DB Using Redis cloud
+
+    Login URL : https://cloud.redis.io/#/login
+
+    Note: Sign in with google
+
+
+=> After login, create database with 30 MB (free of cost)    
+
+    Redis Endpoint URL : redis-16905.c81.us-east-1-2.ec2.redns.redis-cloud.com:16905
+
+    username: default
+
+    password: Q4v9GqpC54RBMZIRMmRBM4DQI57GcL8Y
+
+Note: Our Redis Server is ready in cloud, now we can develop SpringBoot application to connect with Redis Server.    
+
+===================================
+Spring Boot with Redis Integration
+===================================
+
+@@ Spring Boot + Redis DB Git Repo :: https://github.com/ashokitschool/SpringBoot_Redis_Cloud_DB_App.git
+
+## Step-1 : Create springboot app with below dependencies
+
+        a) web-starter
+        b) starter-data-redis
+        c) jedis
+        d) devtools
+
+<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+</dependency>           
+
+## Step-2 :: Configure redis db server details in application.properties file           
+
+spring.data.redis.url=redis-16905.c81.us-east-1-2.ec2.redns.redis-cloud.com
+spring.data.redis.port=16905
+spring.data.redis.username=default
+spring.data.redis.password=Q4v9GqpC54RBMZIRMmRBM4DQI57GcL8Y
+
+
+## Step-3 :: Create RedisConfig class to establish connect with Redis Server
+
+## Step-4 :: Create Entity to represent data (@RedisHash)
+
+## Step-5 :: Create Repository to perform CRUD operations
+
+## Step-6 :: Create REST Controller with HTTP methods
+
+## Step-7 :: Test the application from postman. 

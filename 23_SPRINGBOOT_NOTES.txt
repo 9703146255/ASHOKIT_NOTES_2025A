@@ -1,0 +1,438 @@
+
+=======================
+What is SpringBoot ?
+=======================
+
+=> It is java based framework to develop applications easily.
+
+=> SpringBoot is an extension of Spring framework.
+
+=> SpringBoot is an approach to develop spring based applications with less configurations.
+
+=> SpringBoot 1.x version released in 2015.
+
+=> The current version of SpringBoot is 3.x.
+
+Note: All spring modules and spring concepts we can use in Spring Boot.
+
+=====================================
+What we can develop using SpringBoot
+=====================================
+
+1) Console based applications
+
+2) Web based applications
+
+3) Distributed applications (webservices)
+
+4) Microservices
+
+============================
+Advantages with Spring Boot
+============================
+
+1) POM starters
+
+2) Auto Configuration
+
+3) Embedded Servers
+
+4) Actuators
+
+5) Rapid Application Development
+
+==============
+POM Starters
+==============
+
+=> SpringBoot simpilified maven & gradle dependencies configurations using POM Starters.
+
+=> POM starters are nothing but maven dependencies required for the application development.
+
+=> We have several pom starters in springboot like below
+
+Ex: 
+		a) spring-boot-starter-web
+		
+		b) spring-boot-starter-data-jpa
+		
+		c) spring-boot-starter-security
+		
+		d) spring-boot-starter-mail		
+		
+====================
+Auto Configuration
+====================
+
+=> AutoConfiguration is the process of identifying configurations required for the application and provide them whenever needed.
+
+=> SpringBoot will take care of configurations required for the application.
+		
+Notes: In Springboot, auto configurations will work based on POM starters we have added in the project.	
+
+Ex : 
+
+	web-starter ====> tomcat container will start
+	
+	security-starter ===> login page for security
+	
+	jpa-starter ===> connection pool for db communications
+	
+=================		
+Embedded Servers
+==================
+
+=> In general, to run java web application we need to download and setup server (Ex: Tomcat).
+
+=> If we are using springboot, we no need to setup server to run web applications because springboot will take care of servers to run our applications. i.e Embedded Servers.
+		
+=> SpringBoot will support 3 embedded containers
+
+			1) tomcat (default)
+			2) jetty
+			3) netty
+
+
+============	
+Actuators	
+============
+
+=> Used to monitor and manage springboot application	
+
+Ex : 
+
+1) appliction health checks
+2) classes loaded by application
+3) heap details
+4) Threads details
+
+====================
+Rapid Development	
+====================
+
+=> Springboot supports rapid application development (quickly we can develop and run applications)
+
+=> We can build applications that we can just run immediatley.
+
+=> We can build production grade applications using springboot.
+
+
+=============
+Conclusion
+=============
+
+SpringBoot = spring - xml configurations + auto configurations
+
+=========================================
+Developing First SpringBoot application
+=========================================
+
+1) Initilizr website (start.spring.io)
+
+		-> create project
+		-> download as zip file
+		-> extract zip file
+		-> import into IDE 
+
+2) STS IDE (directly we can create)
+
+=> Below is the folder structure of springboot application.
+
+01_sb_app
+
+	src/main/java
+		- Application.java (start class)
+	
+	src/main/resources
+		- application.properties
+	
+	src/test/java
+	
+	src/test/resources
+	
+	Maven Dependencies
+	
+	pom.xml
+	
+===================================
+What is start class in springboot ?	
+===================================
+
+=> When we create springboot application by default one java class will be created with main () method that is called as start class of spring boot.
+
+=> Start Class is entrypoint for springboot application execution.
+
+------------------------------------------------------
+@SpringBootApplication
+public class Application {
+
+	public static void main(String[] args) {
+		
+		SpringApplication.run(Application.class, args);
+	}
+}
+------------------------------------------------------
+=> In Boot start class we can see 
+
+		@SpringBootApplication
+		
+		SpringApplication.run (..)
+		
+Note: run () method contains logic to start IOC and it returns reference of IOC.
+
+=> spring boot will use below classes to start IOC based on starter configured in pom.xml		
+		
+// boot-starter
+AnnotationConfigApplicationContext
+		
+// boot-starter-web		
+AnnotationConfigServletWebServerApplicationContext
+
+// boot-starter-webflux
+AnnotationConfigReactiveWebServerApplicationContext	
+
+
+===================
+Component Scanning	
+===================
+
+=> The process of identifying spring bean classes available in the application is called as Component scanning.
+
+=> Component scanning will work based on package names.
+
+=> Ioc will scan base package and its sub packages to identify spring bean classes.
+
+Note: The package which contains start class is called as base package.
+
+		in.ashokit  (base package)  (will scan)
+		
+			- Application.java
+			
+		in.ashokit.dao   (will scan)
+		in.ashokit.service (will scan)
+		in.ashokit.util (will scan)
+		
+		com.oracle.secuirty (no scanning)
+		
+===============================================		
+Can we configure more than one base package ?	
+===============================================
+
+Yes, we can do using @ComponentScan annotation at start class like below
+
+------------------------------------------------------
+@SpringBootApplication
+@ComponentScan(basePackages = {"in.ashokit", "com.oracle"})
+public class Application {
+
+	public static void main(String[] args) {
+		
+		ConfigurableApplicationContext ctxt = 
+				SpringApplication.run(Application.class, args);
+	}
+}
+------------------------------------------------------
+
+
+What is @SpringBootApplication annotation : https://www.youtube.com/watch?v=nUogZ3iSfgc
+
+How run method works in internally : https://www.youtube.com/watch?v=1c0rhNuyC9M
+
+====================================
+Working with Banner in SpringBoot ?
+====================================
+
+=> When we run boot application then spring logo printing on the console that is called as banner.
+
+=> We can customize banner text based on requirement.
+
+=> Create "banner.txt" file under "src/main/resources" folder with required content.
+
+=> Banner content we can generate from URL
+
+	URL : https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20
+	
+
+=> SpringBoot banner works based on modes.
+
+			a) OFF
+			b) LOG
+			c) CONSOLE (default)
+			
+=> We can change banner mode using application.properties file 
+
+spring.main.banner-mode=off			
+
+===================================
+What is Runner in the SpringBoot ?
+===================================
+
+=> Runners are used to execute the logic only one time when boot application got started.
+
+=> Runners will be called as part of  start class run () method.
+
+=> In Springboot we can create 2 types of runners 
+
+		1) CommandLine Runner (FI)
+		
+		2) ApplicationRunner (FI)
+		
+
+Note: The above interfaces are functional interfaces means only one abstract method available.		
+
+-------------------------------------------
+@Component
+public class MyCmdRunner implements CommandLineRunner {
+
+	public MyCmdRunner() {
+		System.out.println("MyCmdRunner::Constructor");
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		System.out.println("cmdRunner - run() called........");
+	}
+}
+---------------------------------------------------
+
+
+===================================
+Real-Time scenarios to use Runners 
+===================================
+
+1) load static data from db to cache
+
+2) clean up temporary/staging tables data
+
+---------------------------------------------
+
+------------------------------------------------------
+
+
+=======================
+What is Spring Bean ?
+=======================
+
+=> The java class which is managed by IOC is called as spring bean.
+
+=> To represent java class as spring bean we have several annotations like below
+
+
+@Component ==> independent java classes
+
+@Service ===> Business logic (impl classes)
+
+@Repository ===> DB communication classes
+
+@Configuration => To represent class as config 
+
+@Bean ===> Method level annotation
+
+@Controller ===> To handle C 2 B requests
+
+@RestController ==> To handle B 2 B requests
+
+=================
+What is IOC & DI 
+=================
+
+=> IOC means inversion of control 
+
+=> IoC is used to manage and colloborate objects in the application.
+
+=> IoC will take care of dependency injection.
+
+===============================
+What is Dependency Injection ?
+===============================
+
+=> The process of injecting one class object into another class object is called as Dependency Injection.
+
+=> We can perform DI in 3 ways 
+
+	1) Setter Injection 
+	2) Constructor Injection 
+	3) Field Injection	
+
+=> To perform Dependency Injection we will use @Autowired annotation.
+
+=> Autowired annotation we can write at 3 places 
+
+		a) setter method level (SI)
+		b) constructor level (CI)
+		c) field level (FI)
+
+=============================================================
+How to access private variables outside of the class ?
+=============================================================
+
+package in.ashokit.beans;
+
+import java.lang.reflect.Field;
+
+public class Test {
+
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) throws Exception {
+
+		// load java class into jvm
+		Class<?> forName = Class.forName("in.ashokit.beans.User");
+
+		// load class variable
+		Field field = forName.getDeclaredField("age");
+
+		// give access for variable
+		field.setAccessible(true);
+
+		// getting obj of loaded class
+		Object newInstance = forName.newInstance();
+
+		// type casting
+		User u = (User) newInstance;
+
+		u.getAge();
+
+		// set value to private variable
+		field.set(newInstance, 30);
+
+		u.getAge();
+
+	}
+}
+
+
+
+
+
+1) What is SpringBoot
+2) What we can build using Springboot
+3) Advantages with SpringBoot
+		- POM starters
+		- Auto Configuration
+		- Embedded containers
+		- Actuators
+		- Rapid Development
+4) Creating Boot Application
+5) Boot App folder structure
+6) Start class in SpringBoot
+7) What is @SpringBootApplication annotation
+8) What is Component Scanning
+9) How run() method works internally
+10) Banner in springboot
+11) Runners in SpringBoot
+12) What is IOC 
+13) What is Dependency Injection (CI + SI + FI)
+14) How field injection works internally ?
+15) Spring Annotations
+16) What is Spring Bean 
+17) Spring Bean Scopes
+18) Spring Bean Life Cycle
+
+
+
+1) Spring Core
+2) Spring JDBC
+3) Spring Boot
+
+
+

@@ -1,0 +1,676 @@
+
+## workspace  httpsgithub.comashokitschoolSBMS-52.git
+
+===============
+What is Spring
+===============
+
+= It is java based framework developed by interface21 company.
+
+Note Now spring is under license of VMWare.
+
+= Spring is free and open source framework.
+
+= Spring is called as Application development framework.
+
+Note We can develop all the layers of application using spring framework.
+
+= Spring Framework developed by Rod Johnson
+
+= Spring 1.x released in 2004
+
+= The current version of spring is 6.x version
+
+
+=================================
+What we can develop using Spring
+==================================
+
+1) Stand-alone apps (desktop)
+
+2) Web Applications (C2B)
+
+3) Distributed Applications (B2B)
+
+=====================
+Spring Architecture
+=====================
+
+= Spring developed in modular fashion
+
+    Spring 1.x = 7 modules
+
+    Spring 2.x = 6 modules
+
+    Spring 3.x to 6.x = 20+ modules....
+
+
+Note Spring is loosely coupled framework.
+
+==================
+Spring Modules
+==================
+
+1) Spring Core (IOC & DI)
+
+2) Spring Context    
+
+3) Spring AOP (Aspect Oriented Programming)
+
+4) Spring JDBC  Spring DAO
+
+5) Spring ORM (Object relational mapping)
+
+6) Spring Web MVC (C 2 B)
+
+7) Spring REST (B 2 B)
+
+8) Spring Security (Authentication & Authorization)
+
+9) Spring Cloud (Microservices)
+
+10) Spring Batch (bulk operation)
+
+11) Spring Schedular
+
+12) Spring Data JPA
+
+====================================
+Developing First Spring Application
+====================================
+
+Step-1  Setup STS IDE
+
+Step-2  Create Maven Project using STS IDE
+
+Step-3  Configure Spring-Context dependency in pom.xml
+
+Step-4  Create required java classes
+
+Step-5  Configure Java classes as Spring-Beans (xml)
+
+Step-6  Create class to test IOC behaviour
+
+
+================== Beans.xml ======================
+
+xml version=1.0 encoding=UTF-8
+beans xmlns=httpwww.springframework.orgschemabeans
+    xmlnsxsi=httpwww.w3.org2001XMLSchema-instance
+    xsischemaLocation=
+        httpwww.springframework.orgschemabeans httpwww.springframework.orgschemabeansspring-beans.xsd
+
+     bean id=de class=in.ashokit.beans.DieselEngine
+     
+     bean id=pe class=in.ashokit.beans.PetrolEngine
+
+beans
+
+=======================================================
+public class MyApp {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext ctxt = new ClassPathXmlApplicationContext(Beans.xml);
+
+		DieselEngine de = ctxt.getBean(DieselEngine.class);
+		de.start();
+
+	}
+}
+
+=========================================================
+
+==============
+Assignment
+===============
+
+1) Eclipse Shortcuts  httpswww.youtube.comwatchv=TvYMey5SYa8
+
+2) Debugging  httpswww.youtube.comwatchv=2WxsClYhreE
+
+
+===============
+What is IOC 
+===============
+
+= IOC stands for Inversion of control.
+
+= It is responsible to manage and colloborate classes in our application.
+
+= IOC will take care of objs creation and dependency injection.
+
+= The java classes which are managed by IOC are called as Spring Beans.
+
+= To represent java class as spring bean we are using bean tag.
+
+    bean id= class=
+
+    bean
+
+
+
+==============================
+What is Dependency Injection
+==============================
+
+= Injecting dependent class obj into target class object is called as Dependency Injection.
+
+= We can perform Dependency Injection in 3 ways
+
+        1) Constructor Injection (CI)
+
+        2) Setter Injection (SI)
+
+        3) Field Injection (FI)
+
+= The process of injecting dependent bean obj into target bean obj using target bean constructor is called as constructor injection.
+
+= The process of injecting dependent bean obj into target bean obj using target bean setter method is called as setter injection.
+
+= The process of injecting dependent bean obj into target bean obj using target bean variable directley is called as Field injection.
+
+
+-----------------------------------------------------
+public class PwdService {
+
+    public PwdService() {
+        System.out.println(PwdServiceConstructor);
+    }
+
+    public String encodePwd(String pwd) {
+
+        Encoder encoder = Base64.getEncoder();
+
+        String encodedPwd = encoder.encodeToString(pwd.getBytes());
+
+        return encodedPwd;
+    }
+
+}
+------------------------------------------------------
+
+public class UserService {
+
+    private PwdService pwdService;
+
+    public UserService() {
+        System.out.println(UserServiceConstructor);
+    }
+
+     SI
+    public void setPwdService(PwdService pwdService) {
+        System.out.println(setPwdService() -- called..);
+        this.pwdService = pwdService;
+    }
+
+    public void saveUser(String uname, String pwd, Long phno) {
+
+        String encodePwd = pwdService.encodePwd(pwd);
+
+        System.out.println(Encoded pwd   + encodePwd);
+
+         TODO insert into db
+        System.out.println(Record inserted in DB...);
+    }
+
+}
+-------------------------------------------------------
+xml version=1.0 encoding=UTF-8
+beans xmlns=httpwww.springframework.orgschemabeans
+    xmlnsxsi=httpwww.w3.org2001XMLSchema-instance
+    xsischemaLocation=
+        httpwww.springframework.orgschemabeans httpwww.springframework.orgschemabeansspring-beans.xsd
+
+    bean id=pwd class=in.ashokit.beans.PwdService
+    
+    bean id=user class=in.ashokit.beans.UserService
+
+        property name=pwdService ref=pwd 
+    
+    bean
+
+beans
+-------------------------------------------------------
+
+public class MyApp {
+ 
+    public static void main(String[] args) {
+
+        ApplicationContext ctxt = new ClassPathXmlApplicationContext(Spring-Beans.xml);
+
+        UserService userService = ctxt.getBean(UserService.class);
+
+        userService.saveUser(ashok, ashok@123, 123456l);
+    }
+
+}
+------------------------------------------------------
+
+
+= To represent setter injection we will use 
+ property tag
+
+ Ex property name=pwdService ref=pwd
+
+
+= To represent constructor injection  we will use constructor-arg tag
+
+Ex  constructor-arg name=pwdService ref=pwd
+
+
+= If we perform both setter & constructor for single variable then setter injection will override constructor injection value.
+
+
+
+1) What is framework
+2) Struts vs Hibernate Vs Spring
+3) Spring Introduction
+4) Spring Architecture
+5) Spring Modules Overview
+6) Spring Core Introduction
+7) IOC Container
+8) Dependency Injection (DI)
+9) Constructor Injection
+10) Setter Injection
+11) First Spring Application Development
+12) Maven & Gradle
+13) Debugging
+
+
+================
+Design Patterns
+================
+
+= Design Patterns provides solutions for common problems occuring in project development.
+
+= Design Patterns provided by GOF
+
+= According to GOF design patterns are divided into 3 categories
+
+        1) Structural D.P
+
+        2) Creational D.P
+
+        3) Behavioural D.P
+
+=================================
+What is strategy design pattern 
+=================================
+
+= Use interfaces to establish communication among classes.
+
+
+====================
+What is singleton 
+====================
+
+Singleton Pattern says that justdefine a class that has only one instance and provides a global point of access to it.
+
+In other words, a class must ensure that only single instance should be created and single object can be used by all other classes.
+
+
+------------------------------
+public class DateUtils {
+
+    private static DateUtils instance = null;
+
+     Step-1  Make constructor as private
+    private DateUtils() {
+        System.out.println(DateUtils  Constructor);
+    }
+
+     Step-2  Create static method to give same obj
+    public static DateUtils getInstance() {
+        if (instance == null) {
+            instance = new DateUtils();
+        }
+        return instance;
+    }
+}
+------------------------------------------
+
+1) Eager Intialization
+2) Static block intialization
+3) Lazy Intialization
+4) BillPugh implementation
+5) Thread safety singleton
+
+--------------------------------------------
+
+How to avoid cloning for singleton class
+
+How to avoid de-serialization for singleton class
+
+
+=============
+Bean Scopes
+=============
+
+= Bean scope represents how many objects should be created for spring bean class by IOC container.
+
+= We have below bean scopes in spring
+
+        1) singleton (default)
+
+        2) prototype
+
+        3) request
+
+        4) session
+
+-------------
+Singleton 
+-------------
+
+= singleton is default scope.
+
+= Only one instance will be created for spring bean. 
+
+= Singleton scoped beans objects will be created when IOC container started. 
+
+= Singleton beans will follow Eager Loading.   
+
+-------------
+Prototype  
+-------------
+
+= Every time new object will be created on demand basis. 
+
+= When we call getBean() method then only obj is getting created.
+
+= Prototype beans will follow lazy loading.     
+
+------------------
+request & session
+------------------
+
+= These 2 scopes are belongs to spring web mvc module.
+
+===========
+Autowiring
+===========
+
+= If we use 'ref' attribute to perform DI then it is called as Manual wiring.
+
+bean id=car class=in.ashokit.beans.Car
+   property name=engine ref=de
+bean
+
+= It is a feature in spring framework to identify dependent objects and inject into target objects automatically.
+
+= To perform autowiring we have to enable it by using autowiring modes.
+
+        1) byName
+        2) byType
+        3) constructor
+        4) none
+
+=======
+byName 
+=======
+
+= If any bean id or name matching with target bean variable name then ioc will consider that as dependent bean and ioc will inject that bean into target.    
+
+=======
+byType 
+=======
+
+= It will identify dependent bean based on type of variable available in target bean.
+
+= If variable data type is class then it will inject that class obj as dependent.
+
+= If variable data type is interface then it will identify impl class objs of that interface as dependents.
+
+= If we have more than one impl class for that interfce then IOC will run into ambiguity problem.
+
+Note To resolve byType ambiguity problem we will use primary=true for one bean.
+
+
+============
+constructor 
+============
+
+= It is used to enable constructor injection using autowiring.
+
+= constructor mode internally uses byType to identify dependenty object.
+
+
+public class BookDao {
+
+File f = new File(books.txt);
+
+FileReader fr = new FileReader(f);
+
+BufferedReader br = new BufferedReader(fr);
+
+String line = br.readLine();
+
+while(line != null){
+    
+    String[] data = line.split(,);
+
+    String id = data[0];
+    String name = data[1];
+    String price = data[2];
+
+    TODO  insert into db
+
+    jdbcTemplate.update(sql);
+
+    read linext line
+    line = br.readLine();
+}
+
+}
+
+=========================
+Spring Bean Life Cycle
+=========================
+
+Spring Bean  Class which is managed by IoC.
+
+= For spring beans object creation and object destroying will be taken care by IOC.
+
+= If required we can execute lifecycle methods for a bean
+
+    init - method  call when obj created
+
+    destroy - method  when obj deleted
+
+
+= We can configure init-method and destroy-method as part bean definition like below
+
+ bean id=motor 
+        class=in.ashokit.beans.Motor
+        init-method=start
+        destroy-method=stop       
+
+
+= Bean objs will be deleted when we close IoC container.
+
+public class App {
+
+    public static void main(String[] args) {
+
+        ApplicationContext ctxt = 
+                new ClassPathXmlApplicationContext(Beans.xml);
+
+        Motor m = ctxt.getBean(Motor.class);
+
+        m.doWork();
+        
+        ConfigurableApplicationContext cactxt=
+                (ConfigurableApplicationContext)ctxt;
+        
+        cactxt.close();
+
+    }
+
+}
+
+==================
+What is Depens On 
+==================
+
+= If one spring bean functionality is indirectly depends on another spring bean functionality then we will use depends-on.
+
+Ex 
+
+DataReader bean is depends-on DataWriter bean.
+
+bean id=dr 
+          class=in.ashokit.beans.DataReader 
+          depends-on=dw
+    
+    bean id=dw class=in.ashokit.beans.DataWriter 
+
+
+===============
+Project Lombok
+===============
+
+= It is a java library which is used to avoid boiler plate code in java classes.
+
+= Using Project lombok we can generate below code for our java classes
+
+        1) setters
+        2) getters
+        3) constructors
+        4) toString()
+        5) equals ( ) and hashCode ()
+
+
+Note  Using Project Lombok we can avoid manual coding for above 5 components in java classes.      
+
+========================================
+How to setup project lombok in project
+========================================
+
+1) Add project-lombok as maven dependency in pom.xml file
+
+dependency
+    groupIdorg.projectlombokgroupId
+    artifactIdlombokartifactId
+    version1.18.34version
+    scopeprovidedscope
+dependency
+
+2) install lombok in our IDE.
+
+        a) Go to lombok-jar location (maven local repo)
+
+        b) open cmd and Run lombok-jar file
+
+        Ex  java -jar lombok-jar-file-name
+
+        c) Select IDE .exe file (ex STS.exe & eclipse.exe)
+
+        d) Restart IDE
+
+        e) Use Lombok annotations in java classes
+
+
+===================
+Lombok Annotations
+===================
+
+@Setter
+
+@Getter
+
+@ToString
+
+@EqualsAndHashCode
+
+@NoArgsConstructor
+
+@AllArgsConstructor
+
+@Data   
+
+
+==============================
+
+1) What is Framework 
+2) Why to use frameworks
+3) Spring Introduction
+4) Spring Architecture
+5) Spring Modules Overview 
+6) Spring Core
+7) IOC Container
+8) Dependency Injection
+9) Constructor Injection
+10) Setter Injection
+11) Bean Scopes
+12) Autowiring 
+		- byName
+		- byType
+		- constructor
+		
+13) Bean Lifecycle
+14) Depends-On
+
+15) Project Lombok
+16) Debugging
+
+17) Maven
+18) Gradle  
+
+19) Spring JDBC
+20) DataSource
+21) JdbcTemplate
+		- update(..)
+		- query(..)
+22) RowMapper
+
+23) Excel Generation using Apache POI API
+
+24) PDF generation using iText api.
+
+25) Singleton Design Pattern
+
+26) Strategy Design Pattern
+
+===================
+Spring Annotations
+===================
+
+= Annotations are used to provide metadata to the container.
+
+		Ex @Override, @WebServlet
+
+Note Annotations are used as replacement for xml files.
+
+= Spring Framework supports annotations based configurations.
+
+= Below are the few annotations from Spring Core Module. These annotations to provide metdata to IOC container.
+
+@Component  Represents java class as Spring bean.
+
+@Service  Represents java class as Spring bean.
+
+@Repository  Represents java class as Spring bean.
+
+@Configuration  Represents java class as configuration class.
+
+@Bean  Represents method return type obj as spring bean.
+
+Note @Bean annotation we can use only at method level.
+
+@Scope  Represents bean scope, default scope is singleton.
+
+@Autowired  To perform Dependency Injection.
+
+Note @Autowired annotation we can use at 3 places.
+
+		a) setter method level
+		b) constructor level
+		c) field level
+
+@Qualifier  To identify autowire candidate.
+
+@DependsOn  Represents which bean obj should create before creating current class obj.
+
+
+============================================================

@@ -1,0 +1,164 @@
+
+================================
+Circuit Breaker Design Pattern
+================================
+
+=> To implement "fault tolerant systems" we will use Circuit Breaker design pattern in microservices.
+
+=> Fault Tolerant systems means executing fallback logic when situation is going wrong (exceptions).
+
+
+Ex:
+
+// main logic 
+getDataFromRedis() {
+	
+}
+
+// fallback logic
+getDataFromDB(){
+
+}
+
+=> When user request comes we need to fetch data from redis and send to client.
+
+Requirement : If redis server is down instead of sending error response to client we need to execute fallback logic to getDataFromDB() and send success response to client.
+
+
+===============================================================
+Q) Can we implement this by using try-catch block like below ?
+===============================================================
+
+@RestController
+class App {
+
+	@GetMapping("/data")
+	getData(){	
+		try{
+			m1();
+		}catch(Exception e){
+			m2();
+		}	
+	}
+	m1(){
+		// redis 
+	}	
+	m2(){
+		// database
+	}
+}
+
+Note: Above logic always will call m1() method and when it fails it will call m2() method.
+
+Q) Why to call m1() when it is failing continuosly ???
+
+=> If m1() failing continuosly for 10 requests then don't call m1() method for next 1 hour and call m2() method directley.
+
+=> After 1 hour, retry calling m1() method for 5 requests.. if 5 requests are processed successfully then continue with m1() otherwise continue with m2() for next 1 hour.
+
+=> This requirement we can implement using Circuit Breaker design pattern.
+
+=> We can implement Circuit Breaker design pattern in 2 ways 
+
+		1) Hystrix (outdated)
+		
+		2) Resillence4J (trending)
+		
+=> Circuit Breaker works based on 3 states (modes)
+
+		1) CLOSED
+		
+		2) OPEN
+		
+		3) HALF_OPEN
+
+
+=> Closed state means our system working as expected (normal execution flow).
+
+=> OPEN state means system having issue then only fallback logic will execute.
+
+Note: How much time CB should be in OPEN state we can configure.
+
+=> After given time limit completed CIRCUIT breaker will go HALF_OPEN state.
+
+=> HALF_OPEN state means it will try to call main logic again. If it is working then CB will be closed if it not working then CB will come to OPEN state.
+
+
+================================
+Circuit Breaker Implementation
+================================	
+
+#### 1) Create Spring Boot project with below dependencies
+
+		a) web-starter
+		b) actuator
+		c) aop
+		d) resillence4J
+
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
+
+### 2) Create Rest Controller with required methods		
+
+@RestController
+public class DataRestController {
+
+	@GetMapping("/data")
+	@CircuitBreaker(fallbackMethod = "getDataFromDB", name = "ashokit")
+	public String getDataFromRedis() {
+		System.out.println("*** redis() method called.. ***");
+		int i = 10/0;
+		return "Retrieved Data From Redis";
+	}
+
+	public String getDataFromDB() {
+		System.out.println("*** db() method called.. ***");
+		return "Retrieved Data From Database";
+	}
+
+}
+
+#### 3) Configure Circuit Breaker Properties in application.yml file
+
+spring:
+  application:
+    name: 03_SB_CircuitBreaker_App
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default: 
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 100s
+        failureRateThreshold: 50
+
+#### 4) Test The application and monitor actuator health endpoint to observe Circuit Breaker status.  
+
+
+		URL-1 : http://localhost:8080/data
+
+		URL-2 : http://localhost:8080/actuator/health
+
+
+====================================================================================
+
+Spring Batch : https://youtu.be/2sdY-fKaR2o
+
+====================================================================================

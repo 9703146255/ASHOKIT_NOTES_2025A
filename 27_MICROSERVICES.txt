@@ -1,0 +1,208 @@
+
+==============
+Microservices
+==============
+
+1) Monolith Architecture
+2) Drawbacks of Monolithic
+3) Microservices Architecture
+4) Pros & Cons with Microservices
+
+5) Service Registry (Eureka)
+6) Admin Server
+7) Zipkin Server
+8) FeignClient (Interservice Comm)
+9) Load Balancer (Ribbon)
+10) API Gateway (Filters + Routing)
+11) Config Server
+12) Circuit Breaker (Resillence4J)
+
+
+======================
+Monolith Architecture
+======================
+
+=> Developing all functionalities in single application.
+
+1) Presentation Layer
+2) Business Layer
+3) Data Access Layer
+
+=> Drawbacks with Monolith Architecture
+
+	1) Burden on server
+
+	2) Response Delay
+
+	3) Single Point Of Failure
+
+	4) Technology Dependent
+
+	5) Re-Deploy entire app
+
+=> To overcome problems of Monolith Architecture, people are using Microservices Architecture.
+
+===============
+Microservices	
+===============
+
+=> It is not a new technology
+
+=> It is not a framework
+
+=> It is not a library
+
+=> It is an architectural design pattern.
+
+=> It is universal and anyone can use this architecture to develop applications.	
+
+Note: The main aim of microservices design pattern is to develop application functionalities with loosely coupling.
+
+==============================
+Advantages with Microservices
+==============================
+
+1) Loosely Coupled
+
+2) Burden Reduced on Servers
+
+3) Easy Maintence
+
+4) No Single point of failure
+
+5) Technology Independent
+
+6) Quick deliveries
+
+
+==============================
+Challenges with Microservices
+==============================
+
+1) Bounded Context
+
+2) Repeated configurations
+
+3) Visibility
+
+=> Bounded context means identifying how many microservices we need to develop for one application and deciding which functionality we need to add in which microservice.
+
+=> In Several microserices we need to write same configurations like data source, smtp, kafka, redis etc.
+
+=> In microservice architecture we might not get chance to work with all apis in the application.
+
+=================================
+Spring Cloud with Microservices
+=================================
+
+1) Service Registry (Eureka)
+2) Admin Server
+3) Zipkin Server
+4) Config Server
+5) Kafka Server
+6) Redis Server
+7) API Gateway
+8) FeignClient (Interservice communication)
+
+
+
+==================
+Service Registry
+==================
+
+=> It is also called as Service Discovery or Discovery server
+
+=> Service Registry is used to maintain all Microservices (apis) information like name, status, url, no.of instances and health at once place.
+
+=> It will provide user interface to get apis info.
+
+=> We can use Eureka Server as service registry.
+
+Note: Eureka Server provided by Spring Cloud Libraries.
+
+=============
+Admin Server
+=============
+
+=> It is used to monitor and manage all the apis at one place
+
+Ex: health, info, beans, url-mappings, env, loggers, thread dump, heap dump...
+
+=> It provides beautiful user interface to access all apis actuator endpoints at one place.
+
+==============
+Zipkin Server
+==============
+
+=> It is used for distributed tracing of our requests
+
+ex: 
+
+1) Which request processed by which microservice
+
+2) Time taken to process a request
+
+3) How many microservices involved in request processing
+
+=> It provides beautiful user interface to trace microservices request processing details.
+
+
+================
+Config Server
+================
+
+=> It is used to externalize config props of our application.
+
+Note: Instead of keeping properties (datasource, smtp, kafka, redis...) in our application we can load them from git repo using config server.
+
+=> Config Server makes our application loosely coupled with properties file or yml file.
+
+============
+FeignClient
+============
+
+=> It is used for interservice communication
+
+=> If one api communicate with another api with in the same application then it is called as Inter service communication.
+
+
+==============
+Kafka Server
+==============
+
+=> It is used as message broker
+
+=> Distributed streaming platform
+
+=> It is used to process realtime data feeds
+
+=> It works based on publisher-subscriber model
+
+===============
+Redis Server
+===============
+
+=> Redis is a cache server
+
+=> Redis we can use as in memory database
+
+=> Redis represents data in key-value format
+
+=> Redis is used to reduce no.of db calls and improve performance of the application.
+
+=============
+API Gateway
+=============
+
+=> It acts as Entry point for all backend apis.
+
+=> It acts mediator between frontend app and backend apis.
+
+=> In API Gateway we will write filters + Routings
+
+		Filter : We can perform pre-process & post-process
+
+		Routings : To forward request to particular backend-api.
+
+
+
