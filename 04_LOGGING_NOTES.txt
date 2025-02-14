@@ -1,0 +1,211 @@
+
+===========
+Logging
+===========
+
+=> The process of storing application execution details into a file is called as Logging.
+
+=> Log messages will help us in understanding run-time behaviour of the application.
+
+=> Using log messages we can find root cause of the exception in the code.
+
+=====================
+Logging Architecture
+=====================
+
+1) Logger
+
+2) Layout
+
+3) Appender
+
+=> Logger is a class which is providing methods to generate log messages.
+
+2) Layout represents log message structure.
+
+3) Appender represents destination to store log messages.
+
+	Ex: ConsoleAppender, FileAppender
+	
+=====================
+Logging Frameworks
+=====================
+
+1) Log4J
+2) Log4J2
+3) Logback
+4) Logstash
+
+Note: In SpringBoot we will get "logback" by default.
+
+================
+What is SLF4J ?
+================
+
+=> Simple logging facade for Java
+
+=> IT is an API that supports several logging frameworks available in the market.
+
+=> If we use SLF4J in project then can we can configure any logging framework at the time of deployment.
+
+============
+Log Levels
+============
+
+=> We have several log levels
+
+	TRACE > DEBUG -> INFO > WARN > ERROR
+	
+=> When we set one log level from that level all higher level log methods will be executed.
+
+Note : In SpringBoot the default log level is INFO.	We can change that in application.properties file 
+
+		logging.level.root=DEBUG
+		logging.file.name=app.log
+	
+=> For every log level, Logger class provided method to generate log msg.
+
+Note: Logger class methods we can use like below.
+
+
+@Service
+@Slf4j
+public class UserService {
+
+	// private Logger log = LoggerFactory.getLogger(UserService.class);
+
+	public void saveUser() {
+		log.trace("This is trace msg");
+		log.debug("This is debug msg");
+		log.info("This is info msg");
+		log.warn("This is warn msg");
+		log.error("This is error msg");
+	}
+
+}
+
+@Service
+@Slf4j
+public class ReportService {
+
+	public void generateReport() {
+		log.info("method started");
+		try {
+			int i = 10 / 0;
+		} catch (Exception e) {
+			// e.printStackTrace();
+			log.error(e.getMessage());
+		}
+		log.info("method ended");
+	}
+}
+==================================================
+
+====================
+RollingFileAppender
+====================
+
+1) Time based rolling
+
+2) Size based rolling  
+
+
+=> Time based rolling means every day new log file will be created with timestamp.
+
+=> Size based rolling means after given limit reached then new log file will be created.
+
+=========================
+What is logback.xml ?
+=========================
+
+=> logback.xml is used to customize logging in our application.
+
+=> In logback.xml we will configure below components
+
+	1) Rolling File Appender with policy
+
+	2) Log Msg Pattern
+
+	3) Log Level
+
+=> We will keep logback.xml under "src/main/resources" folder	
+
+-------------------- logback.xml --------------------------------
+
+<configuration>
+
+	<appender name="RollingFile"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>ashokit.log</file>
+		<encoder>
+			<pattern>%d [%thread] %-5level %-50logger{40} - %msg%n</pattern>
+		</encoder>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>ashokit-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<maxFileSize>1GB</maxFileSize>
+			<maxHistory>30</maxHistory>		
+		</rollingPolicy>
+	</appender>	
+	<root level="INFO">
+		<appender-ref ref="RollingFile" />
+	</root>
+	
+</configuration>
+
+------------------------------------------------------------
+
+================
+Log Monitoring
+================
+
+=> The process of getting log msgs from log file is called as Log Monitoring.
+
+=> To monitor log msgs we can use several tools 
+
+		a) Putty
+		b) MobaXterm
+		c) WinScp
+		d) ELK / EFK  (Free)
+		e) Splunk (Commercial)		
+		
+
+=> Putty, MobaXterm and WinScp tools are used to connect from windows to linux machines.
+
+=> ELK and Splunk tools will provide user interface to monitor logs of our application.
+
+
+============
+Assignment
+============
+
+=> Setup ELK stack in windows machine to monitor logs of our springboot application.
+
+@@ Reference Video : https://youtu.be/n2HHAvpn6Jo?si=wcK0VTo71OBC96o_
+
+
+
+=========
+Summary
+=========
+
+1) What is Logging
+
+2) Why Logging
+
+3) Logging Architecture
+
+4) Log Levels
+
+5) Logging in SpringBoot
+
+6) Rolling Policies
+
+7) SL4J Vs Log4J
+
+8) Log Monitoring
+
+		- Putty
+		- WinScp
+		- ELK
+		- SPlunk

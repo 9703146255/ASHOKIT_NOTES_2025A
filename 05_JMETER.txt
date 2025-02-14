@@ -1,0 +1,85 @@
+
+==========
+JMETER
+==========
+
+=> It is a free and open source s/w.
+
+=> JMETER s/w developed using java language.
+
+=> JMETER is a java based GUI application.
+
+=> JMETER is used to implement performance testing of the application.
+
+
+Note : Alternate for JMETER is HP company Load Runner software. It is paid software.
+
+==============================
+What is Performance Testing ?
+==============================
+
+=> Performance Testing is used to identify stability and responsiveness of our application.
+
+=> Using JMETER we can identify below things
+
+		a) Application stability
+		
+		b) Avg response time 
+		
+		c) Bottleneck (failure point)
+
+Note: Performance testing we can't implement with physical users.
+
+=> Using JMETER we can create virtual users and we can test performance of the application with different work loads.
+
+==============
+JMETER Setup
+==============
+
+Step-1 : Download JMETER server as zip file 
+
+Step-2 : Extract zip file 
+
+Step-3 : Go to JMETER bin folder and run jmeter.bat file
+
+==========================
+Creating JMETER Test plan
+==========================
+
+## Step-1 : Create SpringBoot application with below Rest Controller for testing 
+
+------------------------------------------------
+@RestController
+@Slf4j
+public class WelcomeRestController {
+
+	@GetMapping("/welcome")
+	public String getMsg() {
+		log.info("***********welcomeMsg() - started*************");
+		//logic
+		log.info("***********welcomeMsg() - ended*************");
+
+		return "Welcome to Ashok IT";
+	}
+
+}
+------------------------------------------------
+
+## Step-1 : Right Click on Test plan and create Thread Group
+
+## Step-2 : Right Click on Thread Group add Sample -> Http Request
+
+## Step-3 : Configure application URL in http request
+
+## Step-4 : Add Listners in Thread Group 
+
+		a) View Results Tree
+		
+		b) Summary report
+
+## Step-5 : Save Test Plan and Execute it with different threads count.
+
+
+
+
+

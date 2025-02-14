@@ -1,0 +1,193 @@
+
+=================
+Agile with JIRA
+=================
+
+SDLC : Software development lifecycle
+
+=> SDLC Represents software project development process from starting to ending.
+
+=> We have several phases in SDLC 
+
+	1) Requirements Gathering
+	
+	2) Analysis
+	
+	3) Design
+	
+	4) Development
+	
+	5) Testing
+	
+	6) Deployment
+	
+	7) Support (SLA)
+	
+=================
+Waterfall Model	
+=================
+
+=> It is the first SDLC methodology came into market.
+
+=> It is linear model / sequential model.
+
+=> In waterfall model after one step completed then only we will move to next step.
+
+Note: It supports only forward direction.
+
+=> Requirements + Budget + Duration is fixed.
+
+Note: We can't change project requirements in middle.
+
+=> CLient involvement is very less here and client will get the chance to see the project at the end.
+
+Note: If we want to develop large scale applications then waterfall model is not recommended.
+
+============
+Agile Model
+============
+
+=> It is an iterative approach to develop and deliver applications to client.
+
+=> In agile model "planning + development + testing + deployment" is a continous process.
+
+=> Project will be delivered to client in multiple releases (sprints).
+
+=> Client involvement is very high and client feedback is very very important.
+
+Note: Requirements + Budget + Duration  not fixed in agile model.
+
+============
+Agile Team
+============
+
+1) Product Owner
+2) Project Manager
+3) Scrum Master
+4) Tech Lead
+5) Team members
+
+
+=> Product Owner is responsible for client deliverables.
+
+=> Project Manager is responsible to manage the work in the project.
+
+=> Scrum Master is responsible for team colloborations. 
+
+=> Scrum Master is responsible to take daily work updates from team members.
+
+=> Tech Lead is a senior resource in the project and tech lead is responsible to solve technical challenges in the project.
+
+=> Team members means "developers + testers".
+
+
+
+==================
+Agile Terminology
+==================
+
+1) Backlog Grooming
+
+2) Story
+
+3) Story Points
+
+4) Sprint Planning
+
+5) Sprint
+
+6) Scrum
+
+7) Retrospective
+
+
+=> Backlog Grooming is a meeting that is used to discuss about pending works in the project.
+
+=> For every pending work we will create a story in JIRA.
+
+=> Story points will represent duration to complete that story.
+
+		1 day time ===> 3 points
+		
+		2 days time ===> 6 points
+		
+		3 days time ==> 9 points
+		
+Note: Every team member will have access to JIRA to create stories in backlog.	
+
+=> Sprint Planning is the process of identifying priotity stories to deliver from backlog stories.	
+
+=> Sprint means set of stories we need to develop + test + deliver in 2 weeks of time.
+
+Note: As per standard, sprint duration is 2 weeks (we can change it also as per our requirements).
+
+=> Scrum is a daily meeting in which scrum master will take team work updates.
+
+=> Retrospective meeting is used to discuss about sprints feedback.
+
+		- what went well
+		- what went wrong
+		- lessons learnt
+		- new ideas
+		
+=======
+JIRA	
+=======
+
+=> Project management software 
+
+=> We can use this as bug reporting  software also
+
+=> JIRA developed by Atlasian company
+
+=> JIRA is a commerical software, we can use trial version for practice.
+
+
+
+
+============ Git Repo creation email request ========
+
+Subject : SCRUM-1 | Git repo creation request
+
+To : irctc.devops@tcs.com
+
+cc : irctc.development@tcs.com
+
+Body : 
+
+Hi Team,
+
+Greetings for the day..!!
+
+As part of IRCTC project development we need git repo to integrate source code so please create git repo and share repo url with us.
+
+@Sumit - Please approve this request.
+
+Thanks,
+Ashok.
+
+==================== Scrum Call status =========================
+
+Subject : Ashok Bollepalli | Scrum Call status 
+
+To : steve.k@tcs.com 
+
+cc : irctc.development@tcs.com 
+
+Body : 
+
+Hi Steve,
+
+Greetings for the day..!!
+
+Due to some personal emergency i am unable to join scrum call today, please find my work update below
+
+	Story-2 : Jenkins Pipeline creation (In-Progress)
+	It will be completed by tomorrow.
+	
+	I don't have any challenges to complete.
+	
+Thanks,
+Ashok.
+
+=========================================================

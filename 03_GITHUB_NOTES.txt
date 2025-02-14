@@ -1,0 +1,404 @@
+
+=================================
+Source Code Repository Servers
+=================================
+
+=> In a project multiple developers will work
+
+=> Developers may work from different locations
+
+=> We are going face below challenges with team work.
+
+1) How to integrate all the team members code at one place ?
+
+2) How to monitor code changes ?
+
+=> To handle above 2 problems we can use Source Code Repository servers.
+
+=> Below softwares we can use as source code repository servers 
+
+		a) SVN (outdated)
+		
+		b) GIT Hub (Microsoft)
+		
+		c) BitBucket (Atlasian)
+		
+========
+Git Hub 
+========
+
+=> Git Hub is a cloud platform which is used to maintain source code repositories for our projects.
+
+=> Git Hub will provide monitored access for code repositories
+
+		- who modified
+		- when modified
+		- why modified
+		- what modified
+		
+===================		
+Environment Setup		
+===================
+
+Step-1 :: Create github account (free of cost)
+
+Step-2 :: Download and install git client s/w
+
+Note: Git client s/w is used to communicate with git hub repositories.		
+
+Step-3 :: Open gitbash & Configure Name and email in gitbash using below commands (one time setup)
+
+git config --global user.name "Ashok"
+
+git config --global  user.email "ashokitschool@gmail.com"
+
+=================
+Git Architecture
+=================		
+
+1) Working Tree
+
+2) Staging Area
+
+3) Local Repository
+
+4) Central Repository
+
+
+==================
+Git Bash commands
+==================
+
+git init : Intialize working tree
+
+git status : Check working tree status (staged or not)
+
+git add  : Add files to staging area (making eligible for commit)
+
+git commit : Commit staged files to local repo 
+
+git push : Publish local commits to central repo
+
+git restore : To unstage the file and to discard file changes 
+
+Note: git restore will work based on current status of the file.
+
+if file is unstaged ==> It will discard changes made to file 
+
+if file is staged ==> It will unstage the file.
+
+git log : To display commmit history.
+
+git rm : To delete file (rm + commit + push)
+
+git clone : Download central repo to our system.
+
+git pull : Download latest code changes from central to local.
+
+####  Note: git pull may give conflict problem. ####
+
+git gui : To open git gui tool.
+
+==========================
+How to generate git token
+==========================
+
+=> Login into github account 
+
+=> Go to Profile => Settings
+
+=> Developer Settings ==> Personal Access Tokens
+
+=> Generate Classic token (select all checkboxes)
+
+=> COpy that token and save it in a seperate file 
+
+=========================================
+How to push project into git repo
+=========================================
+
+Step-1 : Create springboot application using start.spring.io
+
+Step-2 : Download and extract that application
+
+Step-3 : Create git central repo
+
+Step-4 : Go inside project directory and open git bash
+
+Step-5 : Execute git commands to push project code into central repo 
+
+-----------------------------------------------
+
+echo "# ecomm_store_app" >> README.md
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/ashokitschool/ecomm_store_app.git
+git push -u origin main
+
+-----------------------------------------------
+
+==============
+Git branches
+==============
+
+=> Multiple teams will be working paralelly in single project like below
+
+		a) Development team 
+		b) CR team 
+		c) PROD Support team
+		d) R & D team
+		
+
+=> When all the above teams integrated code in central repo then it will become difficult to deliver particular team code changes to live environment.
+
+=> To overcome this problem we will use 'git branches' concept.
+
+=> In Git Repo we will have one default branch called 'main'
+
+=> We can create any no.of repositories under one git repo
+
+		a) main
+		b) develop
+		c) feature
+		d) feature_JIRA_321
+		e) release
+		d) research
+		
+Note: Management will decide branching strategy (which team should use which branch).
+
+# clone main branch directley
+git clone https://github.com/ashokitschool/ecomm_store_app.git
+
+# clone given branch code
+git clone -b <branch-name> <repo-url>
+
+# branch switch
+git switch <branch-name>
+
+=======================
+Working with branches
+=======================
+
+Step-1 : Go to git central repo and create branches 
+
+Step-2 : Clone git central repo 
+
+	ex : git clone <repo-url>
+
+Step-3 : Switch from main branch to develop branch
+
+	ex: git switch develop
+	
+Step-4 : Commit files to develop branch
+
+Step-5 : Create pull request and merge develop branch changes to main branch.	
+
+=============================
+What is Pull Request (PR) ?
+=============================
+
+=> Pull Request is used to merge changes from one branch to another branch.
+
+==============
+Git conflicts
+==============
+
+=> Git conflicts can occur in below 2 scenarios
+
+		a) git pull 
+		
+		b) branch merging		
+
+Note: If 2 persons modified same file and same lines then git pull will give conflicts.	
+
+=> When conflict occurs then it is our responsibility to resolve that conflict and push code to central repo without conflicts.	
+
+============================
+How to add Collobarators ?
+============================
+
+=> Collobarators means giving access permissions for our git central repo to make code commits.
+
+=> Git Repo => Settings => Colloborators => Add People.
+
+Note: After adding person, they will recieve email invitation to accept.
+
+======================
+What is git forking ?
+======================
+
+=> Git fork is a copy of repository
+
+=> It is used to copy someone's git repository into our github account.
+
+Note: When we want to experiment on some open source public repositories then we can use git fork option.
+
+===================================
+Q) how to remove git local commits
+===================================
+
+=> Using git reset command we can undo local commits 
+
+=> Git Reset we can do in 2 ways 
+
+		a) soft reset 
+		
+		b) hard reset
+		
+=> soft reset means only local commit will be deleted and file changes will be there in staging area.
+
+	Ex : git reset --soft HEAD~1
+
+=> hard reset means local commit will be deleted and file changes also will be deleted from working tree.
+
+	Ex : git reset --hard HEAD~1
+
+===========================================
+Q) how to revert git central repo commits
+============================================
+
+=> Using 'git revert' command we can revert code changes from central repo.
+
+Ex : git revert <commit-id>
+
+Note: After git revert execution we need execute git push.
+
+=======================
+Q) what is git stash 
+=======================
+
+9:00 AM => JIRA-101 assigned to me.
+
+12:00 PM => half of the task completed.
+
+12:30 PM => priority task JIRA-102 assigned.
+
+Note: I should complete JIRA-102 first and push changes to central repo.
+
+=> In this scenario we will stash 101 changes and we will work on 102 changes.
+
+=> After 102 changes are pushed then we will get stashed changes back to working tree using 'git stash apply' command.
+
+=========================
+Q) git pull vs git fetch
+=========================
+
+=> git pull command will download latest code changes from central repo to working tree directley.
+
+=> git fetch command will download latest code changes from central to local repo only.
+
+Note: To get changes from local to working tree we can use git merge command.
+
+	git pull = git fetch + git merge
+
+=========================
+Q) git merge vs rebase
+=========================
+
+git clone https://github.com/ashokitschool/ecomm_store_app.git
+
+cd ecomm_store_app
+
+git switch develop
+
+touch f1.txt f2.txt
+git add .
+git commit -m 'f1 f2 added in develop'
+git push
+
+git switch main
+
+git merge develop (or) git rebase develop
+
+git log
+
+===========================
+Q) what is git cherrypic
+===========================
+
+=> When we use 'git merge' command by default all commits will merge from one branch to another branch.
+
+=> If we want to merge specific commit from one branch to another branch then we can use 'git cherrypic'.
+
+Ex : git cherrypic <commit-id>
+
+
+==============================
+Q) what is .gitignore file ?
+==============================
+
+=> It is used to skip unwanted files and folders from our git commits.
+
+Ex : 
+
+target/
+
+.classpath
+.project
+
+node_modules/
+
+
+=========
+Summary
+==========
+
+1) What is version control software
+2) Version softwares available in market
+3) Git Hub Intro
+4) Git Client
+5) Git Architecture
+	 - working tree
+	 - staging area
+	 - local repo 
+	 - central/remote repo
+	 
+6) Public Vs Private repo
+7) Repo colloborators
+8) Git Bash commands
+		
+		git config
+		git init 
+		git add 
+		git status
+		git commit 
+		git push
+		git clone 
+		git pull
+		git fetch
+		git log
+		git rm
+		git restore
+		git reset
+		git revert
+		git branch 
+		git switch 
+		git checkout
+		git cherrypic
+		git merge
+		git rebase
+		
+9) Git GUI
+
+10) Git branches
+
+11) Git conflicts
+
+12) Pull Request (PR)
+
+13) Git Forking
+
+14) What is .gitignore file
+
+15) What is BitBucket
+
+
+
+Note: In realtime DevOps team is responsible to create source code repositories required for the project.
+
+Note : DevOps team will decide branching strategy (which team should work on which branch, client delivery should happen from which branch).
+
+Note: As a developer we can create any no.of branches under repository.
+

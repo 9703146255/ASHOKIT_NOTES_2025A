@@ -1,0 +1,152 @@
+
+===========================
+Major Project Development
+============================
+
+Project Name : e-Commerce App
+
+Technology Stack : JAVA + Spring Boot + Microservices + MySQL DB + Angular + AWS Cloud + DevOps tools
+
+Project Requirements : https://www.youtube.com/watch?v=IbOMX4OYjSM
+
+
+====================
+Application Modules
+====================
+
+1) Products 
+
+2) Cart
+
+3) Checkout
+
+4) Payment 
+
+5) Orders
+
+6) User Management
+
+=============== Assignment (12-Feb) ================
+
+1) Database design
+
+2) Microservices Design
+
+=====================================================
+
+
+=================
+Database Design
+=================
+
+1) product_category
+
+		category_id		PK
+		category_name
+
+2) product
+
+		product_id		PK
+		name
+		desc
+		title
+		unit_price
+		image_url
+		active
+		units_stock
+		date_created
+		last_updated
+		
+		category_id		FK
+
+3) 	Customer
+
+		customer_id  PK
+		name
+		email (UNIQUE)
+		pwd
+		phno
+		pwd_updated
+
+4) shipping_address
+
+		addr_id		PK
+		house_num
+		street
+		city
+		state
+		zipcode
+		country		
+
+5) Order	
+
+		order_id       			PK
+		order_tracking_num
+		total_quantity
+		total_price
+		order_status (CREATED, CANCELLED, DELIVERED)
+		date_created
+		last_updated
+		delivery_date
+		payment_status
+		razor_pay_order_id	
+		razor_pay_payment_id
+		invoice_url
+
+		customer_id		FK
+		addr_id			FK	
+
+
+6) Order_items
+		
+		order_item_id   PK
+		image_url
+		unit_price
+		quantity
+		
+		product_id      FK
+		order_id        FK
+
+		
+=====================
+Backend Microservices
+=====================
+
+1) Product_API
+
+2) Customer_API
+
+3) Orders_API
+
+4) Notifications_API
+
+5) Admin_API
+
+
+=============== Assignment (13-Feb) ================
+
+1) Create Entities and Repositories
+
+2) Create Request and Response Binding Classes
+
+=====================================================
+
+
+=============== Assignment (14-Feb) =================
+
+1) Develop PRODUCTS_API
+
+		a) get products based on category_id
+		
+		b) get products based on product name (search)
+		
+		c) get product based on product_id
+
+======================================================
+
+
+1) How to upload file into s3 bucket using springboot
+
+2) How to send whatsapp msg using WATI buiness api
+
+3) How to implement Razorpay Payment Gateway in Springboot

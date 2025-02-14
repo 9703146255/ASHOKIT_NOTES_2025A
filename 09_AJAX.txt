@@ -1,0 +1,76 @@
+===========================
+AJAX Introduction
+===========================
+
+1) Synchronus request (entire web page will be reloaded)
+
+2) Asynchronus request (page will not be reloaded, only data will be re-loaded)
+
+in our app, for states and cities drop downs we need to implement asynchronus requests.
+
+
+=> To implement asynchronus request we will use AJAX.
+
+-> To start AJAX engine we can use Jquery library
+
+##### Step-1 : Add below dependency in pom.xml #####
+
+<dependency>
+	<groupId>org.webjars</groupId>
+	<artifactId>jquery</artifactId>
+	<version>3.6.4</version>
+</dependency>
+
+
+##### Step-2 : inlcude js file in html page <head/> section #####
+
+<script src="/webjars/jquery/3.6.4/jquery.min.js"></script>
+
+
+#### step-3 : implement ajax calls to load drop down options dynamically #####
+
+<script>
+
+$(document).ready(function () {
+
+	$("#countryId").on("change", function () {
+		var cid = $("#countryId").val();
+
+		$('#stateId').find('option').remove();
+		$('<option>').val('').text('-Select-').appendTo("#stateId");
+
+		$('#cityId').find('option').remove();
+		$('<option>').val('').text('-Select-').appendTo("#cityId");
+
+		$.ajax({
+			type: 'GET',
+			url: '/states/' + cid,
+			success: function (response) {
+				// iterate response entries and display as state drop down options
+				$.each(response, function (key, value) {
+					$('<option>').val(key).text(value).appendTo("#stateId");
+				});
+			}
+		});
+	});
+
+	$("#stateId").on("change", function () {
+		var stateId = $("#stateId").val();
+
+		$('#cityId').find('option').remove();
+		$('<option>').val('').text('-Select-').appendTo("#cityId");
+
+		$.ajax({
+			type: 'GET',
+			url: '/cities/' + stateId,
+			success: function (response) {
+				// iterate response entries and display as state drop down options
+				$.each(response, function (key, value) {
+					$('<option>').val(key).text(value).appendTo("#cityId");
+				});
+			}
+		});
+	});
+
+});
+</script>

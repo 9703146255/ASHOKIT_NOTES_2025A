@@ -1,0 +1,402 @@
+
+=================================
+Java Real-Time Project (28-JRTP)
+=================================
+
+1) Pre-Requisites
+2) Course Content
+3) Who is eligible to attend
+4) Benefits of attending this course
+5) Course Details
+6) Q & A
+
+
+Trainer : Mr. Ashok (11+ Yrs Exp)
+
+		  Role : Project Manager
+
+		  8+ Yrs Exp In Training
+
+		  Ashok IT - 2020
+
+==================
+Pre-Requisites
+==================
+
+1) Core Java 
+2) Adv. Java (JDBC, Servlets, MVC)		
+3) Database (SQL)  
+4) Web Development (HTML, CSS, JS, BS)
+
+5) SpringBoot & Microservices
+
+Note: SBMS & JRTP you can learn paralelly.
+
+===============
+Course Content
+===============
+
+Module-1 : Software Project Introduction
+		   Sotware Companies
+		   Interview Process
+		   Roles & Responsibilities of developer
+		   Day to Day activities
+		   Project Teams(onshore & offshore)
+		   Escalations
+
+Module-2 : Linux OS
+
+Module-3 : AWS Cloud
+
+Module-4 : DevOps Tools (20+ RealTime Tools)
+
+			1) GitHub & BitBucket
+			2) Maven & Gradle
+			3) JIRA
+			4) SonarQube
+			5) Junit
+			6) Mockito
+			7) Jacocco
+			8) Log4j
+			9) ELK
+			10) JMeter
+			11) Docker (Containerization)
+			12) Kubernetes (Orchestration)
+			13) JENKINS CI CD Server
+			14) Nexus/JFrog (artifactory server)
+			15) Apache Kafka (Message Broker)
+			16) Redis cache
+			17) POSTMAN (API Testing)
+			18) Swagger (API Documentation)
+
+
+Module-5 : Mini Projects Development (2)	
+
+			- Requirements Analysis
+			- DB Design
+			- Components Design
+			- Development
+			- Testing
+
+Module-6 : Angular (evening sessions - online)
+
+Module-7 : Major Project (E-Commerce)
+
+Module-8 : Interview Guidance			
+
+================================
+Who should attend this course ?
+================================
+
+1) Fresher
+
+2) Experienced
+
+==================================
+What is the benefit of attending
+==================================
+
+1) we will get real-time exposure
+
+2) our thought process will change
+
+3) our coding skills will improve
+
+4) Fullstack Development with Real-time project
+
+5) we are going to learn 50 % of devops course syllabus here
+
+6) we will get knowledge on Cloud Infrastructure (AWS)
+
+7) we are equal to 3 years Experienced java developer in terms of skill set.
+
+================
+Course Details
+================
+
+Course Name : 28-JRTP
+Trainer : Mr. Ashok
+Start Date : Today
+Duration : 3 to 4 months
+
+Class Timings : 7:30 AM - 9:00 AM IST
+				(Mon-Sat)
+
+Note: Soft copy notes will be provided
+
+Course Fee : 9000 INR (JRTP + Angular)
+
+Backup Videos : 3000 INR (1 year videos access)
+
+============================
+Types of software projects
+============================
+
+1) What is Software Project ?
+
+	- collection of programs
+
+2) Why to develop software projects ?
+
+	- To reduce human efforts
+	- Simplify humans life
+
+3) Software Projects in IT industry 
+
+	- Scratch development projects (15 %)
+
+	- Maintenence/Support projects (80 %)
+
+	- Migration projects (5%)
+
+
+=> Scratch development means brand new projects which will start from zero level.	
+
+=> Maintenence projects means we are providing support for the running projects.
+
+	- New Enhancements (add new functionality)
+
+	- Change Requests (modify existing functionality)
+
+	- Bug fixing (PROD Support)
+
+=> Migratation projects means converting project from one technology to anothter technology.
+
+
+IBM Mainframes ap -----> springboot & microservices
+
+jdbc + servlets + jsp --> springboot + angular
+
+jdk 1.8 ----> jdk 21
+
+====================
+Software Companies
+====================
+
+1) Product Based 
+
+		- Develop and sell product to customers
+
+	Ex : Amazon, Microsoft, Google, Apple, Netflix
+
+	Interview Process:
+
+			- coding test
+			- system design
+			- problem solving
+			- design patterns
+			- Data Structures
+			- Algorithms
+
+	package : exp * 10 lakhs			
+
+
+2) Service Based
+
+		- Develop project based on client requirement
+
+	Ex : TCS, Infy, CTS, HCL, Deloitte, TechM, Wipro..
+
+	Interview Process :
+
+				1) Coding test/System Test
+				2) Data structures
+				3) Algorithms
+				4) Core Java
+				5) SpringBoot
+				6) Microservices
+				7) Cloud
+				8) DevOps tools
+				9) Frontend (Ng/React)
+
+	Package : exp * 4 to 5  LPA				
+
+3) Outsourcing 
+
+- Provides software engineers to other companies on contract basis.
+
+Ex : 	HCL ----------> JPMC
+
+		Capgemini ----> DBS
+
+Note: Now a days most of service based companies are doing outsourcing business also.		
+
+
+
+=======================================
+Roles & Responsibilities of developers
+========================================
+
+1) We need to participate in project meetings.
+
+=> In every project below meetings will be available.
+
+		- Functional Discussions
+		- Backlog grooming
+		- Sprint planning
+		- Scrum meetings/Status call
+		- Release calls (prod deployment)
+		- Retro meetings (Review)
+		- Bug Triaging meetings
+		
+2) Understand requirements & get clarifications if any doubts on requirements.
+
+Note: Functional Team or Business Analyst team will provide clarifications for our doubts.
+
+3) Database design for the project.
+
+4) Java components Design 
+     (interfaces, classes, methods)
+	 
+5) Development	 
+
+6) Unit testing (Junits)
+
+7) Code Review (SonarQube)
+
+8) Code Integration (GitHub or BitBucket)
+
+9) Code Deployment (Docker + K8S + Jenkins)
+
+10) Integration Testing
+
+11) Bug Fixing (SIT & UAT support)
+
+12) Documentation
+
+13) Knowledge Transfer (KT)
+
+14) In-House Trainings
+
+===============================
+Types of Teams in s/w company
+===============================
+
+1) Onshore team : Works at client location
+
+Note: Functional team works at onshore.
+
+2) Offshore team : Works at non-client locations.
+
+
+Note: microsoft teams s/w
+
+
+===================================
+Day to Day activities of developer
+===================================
+
+1) We need to check our email and give replies if required.
+
+2) Check meetings calendar and prepare accordingly to join those meetings.
+
+3) Check JIRA dashboard for work assignments.
+
+Note: If any task assigned then work on it.
+
+If task not assigned then find pending tasks in sprint and assign to yourself and work on it.
+
+Note: If no pending tasks available to work then inform to your management then they will assign some task for you.
+
+4) Join Scrum call and give work updates to scrum master.
+
+================================
+Module-2 : Realtime Tools (20+)
+================================
+
+1) JIRA : Project Management software
+
+			1) Project tasks creation
+			2) Task assignment
+			3) Project status reports
+			4) Bug Reporting			
+
+2) Git Hub : Source Code Repository software	
+
+			a) Centralize Code Integration
+			b) Code Changes tracking
+					- who
+					- when
+					- what
+					- why
+					
+Note: Alternate for GitHub is BitBucket.
+
+3) Maven : Build Automation Tool
+
+			a) Create Project folder Structure
+			
+			b) Download libraries 
+				(Ex: spring, lombok, poi)
+			
+			c) compile + test + package			
+
+Note: Alternate for Maven is Gradle.
+
+4) Log4J : To generate application log msgs
+
+	  a) Understand runtime behaviour of code
+	  b) Understand exceptions occuring in the code
+	  c) Identify root cause of the problem
+	  
+Note: Alternate for Log4J is logback, logstash.
+	  
+
+5) ELK : Elastic Search + Logstash + Kibana
+
+	  a) Centralize log monitoring
+	  b) All logs we can store at one place
+	  c) Using Kibana UI we can retrieve logs
+	  
+Note: Alternate for ELK is Splunk s/w.	  
+
+6) Junit : Used for unit testing.
+
+	  a) Check individual components of app
+	  b) Identify bugs in the code
+	  
+Note: As part of unit testing we will use Mockito.	  
+
+7) Jacocco : For Code Coverage
+
+Note: We need to maintain min 80% of code coverage.
+
+8) SonarQube : Code Review
+
+	a) Identify developer mistakes in the code
+	b) Identify duplicate code in project
+		
+9) PostMan : API Testing tool
+
+10) JMETER : Performance Testing Tool		
+
+11) Docker : Containerization s/w
+
+12) Kubernetes : Orchestration (management)
+
+13) JENKINS : Automating build + deployment (CI CD)
+
+14) Nexus : Artifactory server (store jars)
+
+15) Kafka : Message Broker (event driven arch)
+
+16) Redis : Distributed Cache (performance improvement)
+
+17) Swagger : API Documentation
+
+18) Putty & WinScp : To connect with Linux VM from windows machine.
+
+======================================================
+
+Day-01 : Course Details
+
+Day-02 : s/w Projects & Companies & Interview Process
+
+Day-03 : Roles & Responsibilities of developers
+
+Day-04 : Day to day activites of developers
+
+Day-05 : Real-Time Tools Overview
+
+=======================================================
+

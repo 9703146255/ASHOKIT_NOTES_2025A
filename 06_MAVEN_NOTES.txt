@@ -1,0 +1,255 @@
+
+=======
+Maven
+=======
+
+=> Maven is a free and open source s/w.
+
+=> Maven tool developed by apache org.
+
+=> Maven developed using Java language.
+
+=> Maven is used to automate java projects build process.
+
+========================
+What is build process ?
+========================
+
+1) Download required jars (libraries)
+
+	Ex: spring, springboot, junit, log4j..
+	
+2) Compile project source code
+
+      .java files -----> .class files 
+
+3) Execute Junit test cases. 
+
+4) Package our application
+
+	Ex : jar file or war file
+	
+============	
+Maven Setup	
+============
+
+@@ Reference Video : https://www.youtube.com/watch?v=hV1OWzYpzxo
+
+1) Download and install java s/w
+
+2) Setup JAVA_HOME and Java Path 
+	
+	JAVA_HOME=C:\Program Files\Java\jdk-17
+	path=C:\Program Files\Java\jdk-17\bin
+
+3) Download Maven sotware as zip and extract it
+
+4) Setup MAVEN_HOME and Maven Path 
+
+	MAVEN_HOME = C:\apache-maven-3.9.9
+	path=C:\apache-maven-3.9.9\bin
+	
+5)  Verify Maven setup in command prompt	
+
+	  $ mvn -version
+	  
+==================
+Maven Terminology
+==================
+
+Archetype : Represents type of project
+
+		quick-start : console app
+
+		web-app : web application
+
+groupId : Represents company name
+
+	Ex : com.tcs
+		 com.ibm
+		 in.ashokit
+
+ArtifactId : Represents project name
+
+Version : Represents project version
+	
+		SNAPSHOT : under development
+
+		RELEASE : Delivered to client		 	
+
+
+Dependencies : Represents libraries required for project
+
+ Ex : spring, spring-boot, hibernate, junit, lombok..
+
+
+Maven Repositories : Represents the location of maven dependencies
+
+		1) Central (public)
+		2) Remote (private -> nexus/jfrog)
+		3) Local (.m2)
+
+Maven Goals : Used to perform project build process.		
+
+	clean : delete .class files (target folder)
+
+	compile : convert .java files into .class files
+
+	test : execute junits
+
+	package : generate jar or war
+
+	
+
+============================
+Create Maven Project in CLI
+============================
+
+=> Open CmD and execute below command to create maven project
+
+mvn archetype:generate -DgroupId=in.ashokit -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 -DinteractiveMode=false
+
+=> We can see below folder structure in the maven project
+
+		My-App
+			- src/main/java   (source code .java files)
+			- src/main/resources (config files)
+			- src/test/java (junit classes)
+			- src/test/resources (config files for testing)
+			- Maven Dependencies (jars)
+			- pom.xml (project object model)
+
+=> Go inside maven project and execute maven goals
+
+		cd my-app
+
+		mvn compile
+		mvn test
+		mvn package
+		mvn clean package			
+
+
+=> Byte code will be generated in project "target" directory.		
+
+=> We can add maven dependencies in "pom.xml" file.
+
+=> We can find maven dependencies in below website
+
+		URL : www.mvnrepository.com	
+	  
+=========================	  
+Maven Project Structure	 
+========================= 
+	  
+===================	  
+Maven Dependencies	
+===================
+
+=> The jar files required for the application development are called as maven dependencies.  
+
+=> We can find maven dependencies in below website
+
+	URl : https://mvnrepository.com/
+	
+
+=> We need to add maven dependencies in project "pom.xml" file then maven will download them and will add to project build path.	
+
+=> When we add dependency in pom.xml file, maven will download child dependencies also. That is called as transitive dependency management.
+
+Ex : when we add "spring-context" dependency maven downloading below dependencies also like below
+
+		a) spring-core
+		b) spring-beans
+		c) spring-aop
+		d) spring-jcl
+		e) spring-expression
+		
+Note: With transitive dependencies we have advantage and dis-advantage also.
+
+	Advantage : less configuration in pom.xml
+	
+	Dis-Advantage : Unwanted jars also loaded.
+	
+===============================
+What is dependency exclusion ?	
+===============================
+
+=> Removing unwanted child dependencies from parent.
+
+=> With below configuration we are excluding "spring-aop" from "spring-context"
+
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-context</artifactId>
+	<version>6.2.0</version>
+	<exclusions>
+		<exclusion>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+		</exclusion>
+	</exclusions>
+</dependency>
+
+====================
+Maven Repository ?
+====================
+
+=> Repository is a place where maven dependencies will be stored.
+
+=> Maven will work with 3 types of repositories 
+
+	1) Local Repository
+	2) Central repository
+	3) Remote Repository	
+
+@@ Local Repository : Where maven will store dependencies in our system (.m2 folder).
+
+Central Repository : Apache maintaining all jars here (public repo).
+
+@@ Remote Repository : Private repository maintained for companies. We can use nexus/jfrog to work with remote repositories.
+
+Note-1: Maven will search for dependencies in local repo first if not available in local repo then it will download from central/remote repositories.
+
+Note-2 : If dependencies available in local repo then maven will add from local repo to project build path.
+
+
+=========================================
+How to connect with remote repository ?
+=========================================
+
+=> Once we join in the project team then we should take "settings.xml" file from the team members.
+
+=> Inside "settings.xml" file remote repo details will be configured.
+
+	Repo Server URL :
+	Repo Server uname:
+	Repo Server pwd : 
+
+
+===========================
+What is Dependency scope ?
+===========================
+
+=> It represents when to load dependency into project class path 
+
+=> We have below 6 scopes for maven dependency 
+
+1) compile (Default)
+2) provided
+3) runtime
+4) test
+5) system
+6) import
+
+==============================================================
+How to skip unit test execution while packaging application ?
+===============================================================
+
+mvn clean package -DskipTests=true
+
+
+=================
+Gradle Tutorial
+=================
+
+Gradle Reference Video : https://www.youtube.com/watch?v=I84f9Q5bFBA

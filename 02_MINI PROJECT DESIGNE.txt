@@ -1,0 +1,53 @@
+=================
+02-Mini Project
+================
+
+Requirement : User management
+
+
+1) User Registration
+
+2) Reset Password 
+
+3) Login 
+
+4) Dashboard 
+
+##### Third Party API : https://dummyjson.com/quotes/random
+
+================
+Database tables
+================
+
+COUNTRY_MASTER
+
+	- COUNTRY_ID	INT PK	AUTO_INCREMENT
+	- COUNTRY_NAME	VARCHAR	
+
+STATES_MASTER
+
+	- STATE_ID		INT PK	AUTO_INCREMENT
+	- STATE_NAME	VARCHAR
+	- COUNTRY_ID	INT		FK
+
+CITIES_MASTER
+
+	- CITY_ID		INT PK	AUTO_INCREMENT
+	- CITY_NAME		VARCHAR
+	- STATE_ID		INT     FK	
+
+
+USER_MASTER
+
+	- USER_ID  		INT PK  AUTO_INCREMENT
+	- UNAME  		VARCHAR
+	- EMAIL 		VARCHAR
+	- PHNO			INT
+	- PWD 			VARCHAR
+	- PWD_UPDATED	VARCHAR
+	- COUNTRY_ID 	INT     FK	
+	- STATE_ID 		INT     FK	
+	- CITY_ID 		INT     FK	
+	- PWD_RESET 	VARCHAR 
+	- CREATED_DATE 	TIMESTAMP
+	- UPDATED_DATE 	TIMESTAMP

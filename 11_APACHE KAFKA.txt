@@ -1,0 +1,91 @@
+
+==============
+Apache kafka
+==============
+
+=> Kafka is used as message broker (mediator).
+
+=> Kafka is used as streaming platform.
+
+=> Kafka is used for real-time data processing.
+
+=> Kafka works based on pub-sub model.
+
+	publisher : The application which stores msg in kafka.
+
+	subscriber : The application which reads msg from kafka.
+
+=> Kafka software is free and open source, developed by Apache org.
+
+===============
+Kafka usecases
+===============
+
+1) swiggy & zomoto orders processing
+
+2) ola, uber and rapido cabs booking
+
+3) Flights journey data processing
+
+
+===================
+Kafka Architecture
+===================
+
+1) Zookeeper (Provides runtime to run kafka server)
+
+2) Kafka Server (Message Broker)
+
+3) Kafka Topic (message queue, to store the messages)
+
+4) Publisher Application (The appliation which sends msgs to kafka topic)
+
+5) Subscriber Application (The application which recieves msgs from kafka topic)
+
+
+================================
+Apache Kafka Setup In Windows
+================================
+
+## Step-1 : Download Zookeeper from below URL
+
+   URL : https://dlcdn.apache.org/zookeeper/zookeeper-3.9.2/apache-zookeeper-3.9.2-bin.tar.gz
+
+## Step-2 : Download Apache Kafka from below URL
+
+	URL : https://downloads.apache.org/kafka/3.8.0/kafka_2.12-3.8.0.tgz
+
+## Step-3 : Set Path to ZOOKEEPER in Environment variables upto bin folder.
+
+### Note: Copy "zookeeper.properties" and "server.properties" files from "kafka/config" folder to "kafka/bin/windows" folder. ###
+
+## Step-4 : Start Zookeeper server using below command from "kafka/bin/windows" folder
+
+    Command : zookeeper-server-start.bat zookeeper.properties
+
+## Step-5: Start Kafka Server using below command from "kafka/bin/windows" folder
+
+    Command : kafka-server-start.bat server.properties
+
+Note: If kafka server is getting stopped, delete kafka logs from temp folder
+
+## Step-6 : Create Kakfa Topic using below command from "kafka/bin/windows" folder
+
+Command : kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic ashokit_topic_1
+
+## Step-7 : View created Topics using below command
+
+   Command : kafka-topics.bat --list --bootstrap-server localhost:9092
+
+
+=========================================================
+
+Kafka Bootstrap Server URL : http://localhost:9092/
+
+==================================================================================
+
+Publisher App : https://github.com/ashokitschool/spring_boot_kafka_producer.git
+
+Subscriber App : https://github.com/ashokitschool/spring_boot_kafka_consumer.git
+
+==================================================================================
