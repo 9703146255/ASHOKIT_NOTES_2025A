@@ -20,7 +20,7 @@ Trainer : Mr. Ashok (11+ Yrs Exp)
 		  Ashok IT - 2020
 
 ==================
-Pre-Requisites
+Pre-Requisites[CORE,ADV,DB,WEB,SBMS]
 ==================
 
 1) Core Java 
@@ -33,8 +33,8 @@ Pre-Requisites
 Note: SBMS & JRTP you can learn paralelly.
 
 ===============
-Course Content
-===============
+Course Content[SC,IP,ROLES & RESP,DAY TO DAY ACT,S/W Companies
+===============[SIR-DPE]
 
 Module-1 : Software Project Introduction
 		   Sotware Companies
@@ -49,10 +49,12 @@ Module-2 : Linux OS
 Module-3 : AWS Cloud
 
 Module-4 : DevOps Tools (20+ RealTime Tools)
+[GIT-BIT,MAV-GRAD,JIRA,SONA,UNIT,MOCK-JOCK,LOG,ELK,JMETER,DOCK,KUBE,NEX,
 
 			1) GitHub & BitBucket
 			2) Maven & Gradle
 			3) JIRA
+
 			4) SonarQube
 			5) Junit
 			6) Mockito
@@ -60,10 +62,12 @@ Module-4 : DevOps Tools (20+ RealTime Tools)
 			8) Log4j
 			9) ELK
 			10) JMeter
+
 			11) Docker (Containerization)
 			12) Kubernetes (Orchestration)
 			13) JENKINS CI CD Server
 			14) Nexus/JFrog (artifactory server)
+
 			15) Apache Kafka (Message Broker)
 			16) Redis cache
 			17) POSTMAN (API Testing)
@@ -174,7 +178,7 @@ Software Companies
 ====================
 
 1) Product Based 
-
+		Based on the market demand, Companies will
 		- Develop and sell product to customers
 
 	Ex : Amazon, Microsoft, Google, Apple, Netflix
@@ -227,7 +231,7 @@ Note: Now a days most of service based companies are doing outsourcing business 
 Roles & Responsibilities of developers
 ========================================
 
-1) We need to participate in project meetings.
+1) We need to participate in project meetings.[pm]
 
 => In every project below meetings will be available.
 
