@@ -3,6 +3,8 @@
 Agile with JIRA
 =================
 
+RADDTDS
+
 SDLC : Software development lifecycle
 
 => SDLC Represents software project development process from starting to ending.
@@ -26,6 +28,10 @@ SDLC : Software development lifecycle
 =================
 Waterfall Model	
 =================
+Firt  model
+linear/seq
+one step-> another step
+it supports -->
 
 => It is the first SDLC methodology came into market.
 
@@ -35,7 +41,7 @@ Waterfall Model
 
 Note: It supports only forward direction.
 
-=> Requirements + Budget + Duration is fixed.
+=> Requirements + Budget + Duration is fixed.[RBD]
 
 Note: We can't change project requirements in middle.
 
@@ -47,7 +53,7 @@ Note: If we want to develop large scale applications then waterfall model is not
 Agile Model
 ============
 
-=> It is an iterative approach to develop and deliver applications to client.
+=> It is an iterative approach to "develop and deliver applications" to client.
 
 => In agile model "planning + development + testing + deployment" is a continous process.
 
@@ -68,9 +74,9 @@ Agile Team
 5) Team members
 
 
-=> Product Owner is responsible for client deliverables.
+=> "Product Owner" is responsible for "client deliverables".[how to deliver product/services to the client]
 
-=> Project Manager is responsible to manage the work in the project.
+=> Project Manager is responsible to "manage the work" in the project.
 
 => Scrum Master is responsible for team colloborations. 
 
@@ -83,7 +89,7 @@ Agile Team
 
 
 ==================
-Agile Terminology
+Agile Terminology[BSSSSSR]
 ==================
 
 1) Backlog Grooming
@@ -115,7 +121,7 @@ Agile Terminology
 		
 Note: Every team member will have access to JIRA to create stories in backlog.	
 
-=> Sprint Planning is the process of identifying priotity stories to deliver from backlog stories.	
+=> Sprint Planning is the "process of identifying priotity stories" to deliver from backlog stories.	
 
 => Sprint means set of stories we need to develop + test + deliver in 2 weeks of time.
 
@@ -133,6 +139,7 @@ Note: As per standard, sprint duration is 2 weeks (we can change it also as per 
 =======
 JIRA	
 =======
+PM,BR,WA,TA
 
 => Project management software 
 
